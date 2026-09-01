@@ -1,0 +1,19 @@
+#!/bin/bash
+
+echo "========================================"
+echo "             CLOUDWATCHX"
+echo "        SYSTEM MONITORING PLATFORM"
+echo "========================================"
+echo
+
+echo "[1/2] Collecting system metrics..."
+python cloudwatchx_v3.py
+
+echo
+echo "[2/2] Checking system alerts..."
+python cloudwatchx_alerts_v2.py
+
+echo
+echo "========================================"
+echo "          CLOUDWATCHX COMPLETE"
+echo "========================================"

@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CloudWatchX | Monitoring Dashboard</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <div class="brand">
+                <div class="brand-icon">CX</div>
+
+                <div>
+                    <h1>CloudWatchX</h1>
+                    <span>Observability Platform</span>
+                </div>
+            </div>
+
+
+            <nav>
+
+                <a href="#" class="nav-item active">
+                    <span>▣</span>
+                    Dashboard
+                </a>
+
+                <a href="#metrics" class="nav-item">
+                    <span>◉</span>
+                    Metrics
+                </a>
+
+                <a href="#alerts" class="nav-item">
+                    <span>⚠</span>
+                    Alerts
+                </a>
+
+                <a href="#system" class="nav-item">
+                    <span>⚙</span>
+                    System
+                </a>
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <div class="agent-status">
+                    <span class="status-dot"></span>
+
+                    <div>
+                        <strong>Monitoring Active</strong>
+                        <small>Collector running</small>
+                    </div>
+                </div>
+
+                <div class="version">
+                    CloudWatchX v1.0
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+
+        <main class="main">
+
+            <!-- TOP BAR -->
+
+            <header class="topbar">
+
+                <div>
+
+                    <p class="eyebrow">SYSTEM OVERVIEW</p>
+
+                    <h2>Monitoring Dashboard</h2>
+
+                </div>
+
+
+                <div class="topbar-right">
+
+                    <div class="connection">
+
+                        <span id="connection-dot" class="status-dot"></span>
+
+                        <span id="connection-status">
+                            CONNECTING
+                        </span>
+
+                    </div>
+
+                    <div class="timestamp">
+
+                        <span>Last update</span>
+
+                        <strong id="last-updated">
+                            --
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- SYSTEM HEALTH -->
+
+            <section class="health-banner">
+
+                <div class="health-info">
+
+                    <div id="system-health-icon" class="health-icon">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <p class="eyebrow">
+                            OVERALL SYSTEM STATUS
+                        </p>
+
+                        <h3 id="system-health">
+                            HEALTHY
+                        </h3>
+
+                        <p id="health-description">
+                            All monitored resources are operating normally.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="health-meta">
+
+                    <div>
+                        <span>Monitoring</span>
+                        <strong>Active</strong>
+                    </div>
+
+                    <div>
+                        <span>Refresh</span>
+                        <strong>10 sec</strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- METRIC CARDS -->
+
+            <section id="metrics" class="metrics-grid">
+
+
+                <!-- CPU -->
+
+                <article class="metric-card">
+
+                    <div class="metric-header">
+
+                        <div class="metric-title">
+
+                            <div class="metric-icon cpu-icon">
+                                CPU
+                            </div>
+
+                            <div>
+                                <h3>CPU Usage</h3>
+                                <span>Processor utilization</span>
+                            </div>
+
+                        </div>
+
+                        <span id="cpu-status" class="badge healthy">
+                            HEALTHY
+                        </span>
+
+                    </div>
+
+
+                    <div class="metric-value">
+
+                        <strong id="cpu">--</strong>
+
+                        <span>%</span>
+
+                    </div>
+
+
+                    <div class="progress">
+
+                        <div
+                            id="cpu-progress"
+                            class="progress-bar"
+                            style="width: 0%">
+                        </div>
+
+                    </div>
+
+
+                    <div class="metric-footer">
+
+                        <span>Warning: <strong>80%</strong></span>
+
+                        <span>Critical: <strong>90%</strong></span>
+
+                    </div>
+
+                </article>
+
+
+                <!-- MEMORY -->
+
+                <article class="metric-card">
+
+                    <div class="metric-header">
+
+                        <div class="metric-title">
+
+                            <div class="metric-icon memory-icon">
+                                RAM
+                            </div>
+
+                            <div>
+                                <h3>Memory Usage</h3>
+                                <span>System memory utilization</span>
+                            </div>
+
+                        </div>
+
+                        <span id="memory-status" class="badge healthy">
+                            HEALTHY
+                        </span>
+
+                    </div>
+
+
+                    <div class="metric-value">
+
+                        <strong id="memory">--</strong>
+
+                        <span>%</span>
+
+                    </div>
+
+
+                    <div class="progress">
+
+                        <div
+                            id="memory-progress"
+                            class="progress-bar"
+                            style="width: 0%">
+                        </div>
+
+                    </div>
+
+
+                    <div class="metric-footer">
+
+                        <span>Warning: <strong>80%</strong></span>
+
+                        <span>Critical: <strong>90%</strong></span>
+
+                    </div>
+
+                </article>
+
+
+                <!-- DISK -->
+
+                <article class="metric-card">
+
+                    <div class="metric-header">
+
+                        <div class="metric-title">
+
+                            <div class="metric-icon disk-icon">
+                                DISK
+                            </div>
+
+                            <div>
+                                <h3>Disk Usage</h3>
+                                <span>Root filesystem utilization</span>
+                            </div>
+
+                        </div>
+
+                        <span id="disk-status" class="badge healthy">
+                            HEALTHY
+                        </span>
+
+                    </div>
+
+
+                    <div class="metric-value">
+
+                        <strong id="disk">--</strong>
+
+                        <span>%</span>
+
+                    </div>
+
+
+                    <div class="progress">
+
+                        <div
+                            id="disk-progress"
+                            class="progress-bar"
+                            style="width: 0%">
+                        </div>
+
+                    </div>
+
+
+                    <div class="metric-footer">
+
+                        <span>Warning: <strong>80%</strong></span>
+
+                        <span>Critical: <strong>90%</strong></span>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PROCESSES -->
+
+                <article class="metric-card">
+
+                    <div class="metric-header">
+
+                        <div class="metric-title">
+
+                            <div class="metric-icon process-icon">
+                                PROC
+                            </div>
+
+                            <div>
+                                <h3>Processes</h3>
+                                <span>Active system processes</span>
+                            </div>
+
+                        </div>
+
+                        <span class="badge healthy">
+                            RUNNING
+                        </span>
+
+                    </div>
+
+
+                    <div class="metric-value">
+
+                        <strong id="processes">--</strong>
+
+                    </div>
+
+
+                    <div class="process-info">
+
+                        <span>Process count</span>
+
+                        <span>Live</span>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- CHART -->
+
+            <section class="panel chart-panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            PERFORMANCE
+                        </p>
+
+                        <h2>Resource Utilization</h2>
+
+                    </div>
+
+
+                    <div class="legend">
+
+                        <span>
+                            <i class="legend-cpu"></i>
+                            CPU
+                        </span>
+
+                        <span>
+                            <i class="legend-memory"></i>
+                            Memory
+                        </span>
+
+                        <span>
+                            <i class="legend-disk"></i>
+                            Disk
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="chart-container">
+
+                    <canvas id="metrics-chart"></canvas>
+
+                </div>
+
+
+                <div class="chart-footer">
+
+                    <span>
+                        Last 60 readings
+                    </span>
+
+                    <span>
+                        Warning ≥ 80% &nbsp; | &nbsp;
+                        Critical ≥ 90%
+                    </span>
+
+                </div>
+
+            </section>
+
+
+            <!-- TWO COLUMN AREA -->
+
+            <section class="bottom-grid">
+
+
+                <!-- RECENT METRICS -->
+
+                <section class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <p class="eyebrow">
+                                HISTORY
+                            </p>
+
+                            <h2>Recent Metrics</h2>
+
+                        </div>
+
+                        <span class="live-label">
+                            ● LIVE
+                        </span>
+
+                    </div>
+
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>Time</th>
+
+                                    <th>CPU</th>
+
+                                    <th>Memory</th>
+
+                                    <th>Disk</th>
+
+                                    <th>Processes</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="metrics-table">
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </section>
+
+
+                <!-- ALERTS -->
+
+                <section id="alerts" class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <p class="eyebrow">
+                                EVENTS
+                            </p>
+
+                            <h2>Recent Alerts</h2>
+
+                        </div>
+
+                    </div>
+
+
+                    <div id="alerts-container">
+
+                        <div class="empty-alert">
+
+                            <div class="empty-icon">
+                                ✓
+                            </div>
+
+                            <strong>No active alerts</strong>
+
+                            <span>
+                                System is operating normally.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </section>
+
+
+            <!-- SYSTEM INFO -->
+
+            <section id="system" class="panel system-panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            INFRASTRUCTURE
+                        </p>
+
+                        <h2>System Information</h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="system-grid">
+
+                    <div class="system-item">
+
+                        <span>Monitoring Agent</span>
+
+                        <strong>CloudWatchX</strong>
+
+                    </div>
+
+                    <div class="system-item">
+
+                        <span>Data Store</span>
+
+                        <strong>SQLite</strong>
+
+                    </div>
+
+                    <div class="system-item">
+
+                        <span>API</span>
+
+                        <strong>Flask</strong>
+
+                    </div>
+
+                    <div class="system-item">
+
+                        <span>Collection Interval</span>
+
+                        <strong>1 minute</strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script src="/static/app.js"></script>
+
+</body>
+
+</html>
