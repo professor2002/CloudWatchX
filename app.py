@@ -44,8 +44,17 @@ def load_thresholds():
     return thresholds
 
 
+@app.route("/health")
+def health_check():
+
+    return jsonify({
+        "status": "healthy"
+    })
+
+
 @app.route("/")
 def home():
+
     return render_template("index.html")
 
 
